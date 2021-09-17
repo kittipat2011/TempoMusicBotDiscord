@@ -3,6 +3,8 @@ from discord.ext import commands
 import youtube_dl
 import os
 
+token = 'ODg4MDc2NTU1OTg3ODQ5MjI2.YUNbvg.gnSaNApx-MO_CkboAyFsE4qEJsk'
+
 client = commands.Bot(command_prefix="!")
 
 
@@ -87,4 +89,4 @@ async def stop(ctx):
         await ctx.send("ยังไม่ได้เข้าห้อง")
 
 
-client.run('ODg4MDc2NTU1OTg3ODQ5MjI2.YUNbvg.gnSaNApx-MO_CkboAyFsE4qEJsk')
+client.run(token)
