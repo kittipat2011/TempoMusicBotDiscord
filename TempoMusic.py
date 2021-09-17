@@ -7,6 +7,31 @@ token = 'ODg4MDc2NTU1OTg3ODQ5MjI2.YUNbvg.gnSaNApx-MO_CkboAyFsE4qEJsk'
 
 client = commands.Bot(command_prefix="!")
 
+@client.event
+async def on_ready():
+    await client.change_presence(status=discord.Status.idle, activity=discord.Game('Beta version'))
+    print(f"-----\nLogged in as: {client.user.name} : {client.user.id}\n-----")
+
+@client.command()
+async def stats(ctx):
+    pythonVersion = platform.python_version()
+    dpyVersion = discord.__version__
+    serverCount = len(client.guilds)
+    memberCount = len(set(client.get_all_members()))
+
+    embed = discord.Embed(title=f'{client.user.name} Stats', description='\uFEFF', colour=ctx.author.colour, timestamp=ctx.message.created_at)
+
+    embed.add_field(name='Bot Version:', value=client.version)
+    embed.add_field(name='Python Version:', value=pythonVersion)
+    embed.add_field(name='Discord.Py Version', value=dpyVersion)
+    embed.add_field(name='Total servers:', value=serverCount)
+    embed.add_field(name='Total Users:', value=memberCount)
+    embed.add_field(name='Bot Developers:', value="<@300210758757777408> <@262466223122546688>")
+
+    embed.set_footer(text=f"Lnwdech, Kittipatzy | {client.user.name}")
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+
+    await ctx.send(embed=embed)
 
 @client.command()
 async def play(ctx, *url_raw):
