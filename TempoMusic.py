@@ -117,5 +117,10 @@ async def stop(ctx):
 async def ping(ctx):
     await ctx.send(f'Ping = {round(client.latency * 1000)} ms')
 
+@client.event
+async def on_command_error(ctx, error):
+    print(ctx.command.name + " was invoked incorrectly.")
+    print(error)
+
 
 client.run(token)
