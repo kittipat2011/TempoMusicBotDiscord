@@ -88,5 +88,9 @@ async def stop(ctx):
     else:
         await ctx.send("ยังไม่ได้เข้าห้อง")
 
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Ping = {round(client.latency * 1000)} ms')
+
 
 client.run(token)
